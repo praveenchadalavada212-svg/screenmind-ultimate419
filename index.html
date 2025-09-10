@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScreenMind Ultimate</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- PDF export/import libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="branding">
+      <h1>ScreenMind Ultimate</h1>
+      <span>AI-powered, collaborative screenplay studio</span>
+    </div>
+    <nav class="action-bar" aria-label="Main actions">
+      <button id="btn-new">✍ New</button>
+      <label for="file-import" class="btn-import">
+        📂 Import
+        <input type="file" id="file-import" accept=".fdx,.fountain,.pdf,.txt,.docx,.doc" style="display:none">
+      </label>
+      <button id="btn-export-pdf">🖨️ PDF</button>
+      <button id="btn-export-txt">📄 TXT</button>
+      <button id="btn-export-fountain">💧 Fountain</button>
+      <button id="btn-copy-draft">📋 Copy</button>
+      <button id="btn-darkmode" title="Toggle dark mode">🌙</button>
+    </nav>
+  </header>
+  <main class="main-content">
+    <!-- SCREENPLAY TOOLBAR BEGIN -->
+    <div class="screenplay-toolbar" role="toolbar" aria-label="Screenwriting tools">
+      <button onclick="insertFormat('scene')" title="Insert Scene Heading">Scene</button>
+      <button onclick="insertFormat('shot')" title="Insert Shot">Shot</button>
+      <button onclick="insertFormat('action')" title="Insert Action">Action</button>
+      <button onclick="insertFormat('character')" title="Insert Character">Character</button>
+      <button onclick="insertFormat('dialogue')" title="Insert Dialogue">Dialogue</button>
+    </div>
+    <!-- SCREENPLAY TOOLBAR END -->
+    <textarea id="editor" aria-label="Screenplay editor" placeholder="Write your screenplay here..." autofocus></textarea>
+    <div class="options-panel-row">
+      <button id="btn-psychology">🧠 Psychology</button>
+      <button id="btn-mythology">⚡ Mythology</button>
+      <button id="btn-collaboration">👥 Collaborate</button>
+      <button id="btn-beatboard">📋 Beat Board</button>
+      <button id="btn-ai-suggest">🤖 AI</button>
+    </div>
+    <aside id="panel-psychology" class="panel hidden"></aside>
+    <aside id="panel-mythology" class="panel hidden"></aside>
+    <aside id="panel-collaboration" class="panel hidden"></aside>
+    <aside id="beatboard-panel" class="panel hidden"></aside>
+    <aside id="ai-panel" class="panel hidden"></aside>
+  </main>
+  <footer>
+    <span id="status">Ready. <span style="font-size:.9em;">(AI requires a valid Google Gemini API key)</span></span>
+  </footer>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
