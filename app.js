@@ -145,7 +145,7 @@ btnMyth.onclick = () => {
 function renderPsychology(text) {
   const charNames = Array.from(new Set((text.match(/^[A-Z][A-Z0-9 _\-]+\s*$/gm) || []).map(x => x.trim())));
   if (!charNames.length)
-    return <h2>Psychological Analysis</h2><p>No character names found so far.</p>;
+    return `<h2>Psychological Analysis</h2><p>No character names found so far.</p>`;
   return `<h2>Psychological Analysis</h2>
     ${charNames.map((name, i) => `
       <section>
@@ -199,7 +199,7 @@ function renderBeatBoard() {
         <button onclick="addBeat()">Add</button>
       </div>
       <div class="beatboard-list" id="beatboard-list">
-        ${beats.map((b, i) => <div class="beat" draggable="true" data-index="${i}">${b}</div>).join("")}
+        ${beats.map((b, i) => `<div class="beat" draggable="true" data-index="${i}">${b}</div>`).join("")}
       </div>
     </div>
     <button onclick="document.getElementById('beatboard-panel').classList.add('hidden')">Close</button>`;
@@ -252,7 +252,7 @@ btnAI.onclick = async () => {
         body: JSON.stringify({
           contents: [{
             parts: [{
-              text: Screenplay excerpt:\n${context}\nSuggest the next scene or continue the story.
+              text:  `Screenplay excerpt:\n${context}\nSuggest the next scene or continue the story.`
             }]
           }]
         })
@@ -267,7 +267,7 @@ btnAI.onclick = async () => {
   }
   document.getElementById('ai-wait').style.display = 'none';
   document.getElementById('ai-content').innerHTML =
-    <div style="margin:1em 0;padding:1em 1.2em;background:#feffd9;border-radius:.7em;white-space:pre-wrap;"><em>${output}</em></div>;
+    `<div style="margin:1em 0;padding:1em 1.2em;background:#feffd9;border-radius:.7em;white-space:pre-wrap;"><em>${output}</em></div>`;
 };
 function showToast(msg, t = 2100) { toast.innerText = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), t); }
 function closePanels() { [panelPsych, panelMyth, panelCollab, beatBoardPanel, aiPanel].forEach(p => p.classList.add("hidden")); }
